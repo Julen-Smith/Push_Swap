@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 00:47:06 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 00:56:14 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,9 +186,7 @@ void	ft_rotate_a(t_nodelst *nodelst)
 			penultimate->next = head_node;
 			head_node->next = NULL;
 		}
-	
 }
-
 
 void	ft_minirotate_b(t_nodelst *nodelst)
 {
@@ -228,6 +226,11 @@ void	ft_rotate_b(t_nodelst *nodelst)
 		}
 }
 
+void	ft_rotate_rr(t_nodelst *nodelst)
+{
+	ft_rotate_a(nodelst);
+	ft_rotate_b(nodelst);
+}
 int main(int argc, char *argv[])
 {
 	t_nodelst *nodelst;
@@ -247,8 +250,7 @@ int main(int argc, char *argv[])
 	printf("\n------------------------------\n\n");
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
-	//ft_push_b(nodelst);
-	ft_rotate_b(nodelst);
+	ft_rotate_rr(nodelst);
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
 	printf("\n------------------------------\n\n");
