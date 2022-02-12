@@ -171,12 +171,12 @@ void	ft_rotate_a(t_nodelst *nodelst)
 	t_node *second_node;
 	t_node *penultimate;
 	t_node *last_node;
-	if(ft_iterate_stack(nodelst,'a') < 1)
-	{
-		if (ft_iterate_stack(nodelst,'a') == 1)
-			ft_minirotate_a(nodelst);
-		else
-		{
+//	if(ft_iterate_stack(nodelst,'a') < 1)
+//	{
+		//if (ft_iterate_stack(nodelst,'a') == 1)
+		//	ft_minirotate_a(nodelst);
+		//else
+		//{
 			head_node = nodelst->a_head;
 			second_node = nodelst->a_head->next;
 			penultimate = ft_return_specific_node(nodelst, ft_iterate_stack(nodelst,'a') -1,'a');
@@ -185,58 +185,39 @@ void	ft_rotate_a(t_nodelst *nodelst)
 			last_node->next = second_node;
 			penultimate->next = head_node;
 			head_node->next = NULL;
-		}
-	}	
+		//}
+//	}	
 }
 
-/*
 void	ft_rotate_b(t_nodelst *nodelst)
 {
-	t_node *pnt;
-	t_node *b_head_pointer;
+	t_node *head_node;
+	t_node *second_node;
+	t_node *penultimate;
 	t_node *last_node;
-	int lstsize;
-	int i;
-
-	i = 0;
-	pnt = nodelst->b_head;
-	last_node = nodelst->b_head;
-	b_head_pointer = nodelst->b_head;
-	lstsize = ft_iterate_stack(nodelst,'b');
-	printf("%d\n",lstsize);
-	if(lstsize == 2)
-	{
-		last_node = b_head_pointer->next;
-		last_node->next = b_head_pointer;
-		b_head_pointer->next = NULL;
-		nodelst->b_head = last_node;
-	}
-	else
-	{
-		while(i != lstsize -1)
-		{
-			pnt = pnt->next;
-			i++;
-		}
-		i = 0;
-		while(i != lstsize)
-		{
-			last_node = last_node->next;
-			i++;
-		}
-		nodelst->b_head = last_node;
-		last_node->next = b_head_pointer->next;
-		pnt->next = b_head_pointer;
-		b_head_pointer->next = NULL;
-	}	
+//	if(ft_iterate_stack(nodelst,'a') < 1)
+//	{
+		//if (ft_iterate_stack(nodelst,'a') == 1)
+		//	ft_minirotate_a(nodelst);
+		//else
+		//{
+			head_node = nodelst->b_head;
+			second_node = nodelst->b_head->next;
+			penultimate = ft_return_specific_node(nodelst, ft_iterate_stack(nodelst,'b') -1,'b');
+			last_node = ft_return_specific_node(nodelst, ft_iterate_stack(nodelst,'b'),'b');
+			nodelst->b_head = last_node;
+			last_node->next = second_node;
+			penultimate->next = head_node;
+			head_node->next = NULL;
+		//}
+//	}	
 }
-*/
 
-
-void	ft_rotate_ab(t_nodelst *nodelst)
+void	ft_rotate_rr(t_nodelst *lst)
 {
+	ft_rotate_a(lst);
+	ft_rotate_b(lst);
 
-	
 }
 
 
@@ -250,11 +231,13 @@ int main(int argc, char *argv[])
 	//ft_swap_a(nodelst);
 	//ft_swap_b(nodelst);
 	//ft_swap_ss(nodelst);
+	ft_push_b(nodelst);
+	ft_push_b(nodelst);
+	ft_push_b(nodelst);
 	//ft_push_b(nodelst);
-	//ft_push_b(nodelst);
-	//ft_push_b(nodelst);
-	//ft_push_b(nodelst);
-	ft_rotate_a(nodelst);
+	ft_print_stack_a(nodelst);
+	ft_print_stack_b(nodelst);
+	ft_rotate_rr(nodelst);
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
 	printf("\n------------------------------\n\n");
