@@ -6,11 +6,11 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/10 13:08:06 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 01:55:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    "push_swap.h"
+#include "../Include/push_swap.h"
 
 
 char **ft_args_to_string(int argc, char *argv[])

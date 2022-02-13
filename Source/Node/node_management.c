@@ -6,11 +6,11 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/10 12:23:07 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 01:56:00 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Include/push_swap.h"
 
 t_node *ft_create_node()
 {
