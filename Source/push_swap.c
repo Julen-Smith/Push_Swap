@@ -6,11 +6,11 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 01:59:07 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 02:03:01 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "Include/push_swap.h"
 
 int main(int argc, char *argv[])
 {

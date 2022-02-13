@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 01:58:33 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 02:02:58 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void		ft_swap_ss(t_nodelst *nodelst);
 void		ft_rotate_a(t_nodelst *nodelst);
 void		ft_rotate_b(t_nodelst *nodelst);
 void		ft_rotate_rr(t_nodelst *nodelst);
+void		ft_reverse_rotate_b(t_nodelst *nodelst);
+void		ft_reverse_rotate_a(t_nodelst *nodelst);
+void		ft_reverse_rotate_rr(t_nodelst *nodelst);
 void		ft_print_stack_a(t_nodelst *nodelst);
+void		ft_print_stack_b(t_nodelst *nodelst);
 t_node		*ft_create_node();
 t_nodelst	*ft_generate_nodelst(char **nbr);
 char		**ft_args_to_string(int argc, char *argv[]);
