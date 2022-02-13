@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 01:56:00 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 02:59:22 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	ft_print_stack_a(t_nodelst *nodelst)
 		dummy = nodelst->a_head;
 		while(dummy->next)
 		{
-			printf("%d\n",dummy->nbr);
+			printf("%d Position : %d\n",dummy->nbr,dummy->position);
 			dummy = dummy->next;
 		}
-			printf("%d\n\n",dummy->nbr);	
+			printf("%d Position : %d\n\n",dummy->nbr,dummy->position);	
 	}
 
 }
@@ -76,10 +76,10 @@ void	ft_print_stack_b(t_nodelst *nodelst)
 		dummy = nodelst->b_head;
 		while(dummy->next)
 		{
-			printf("%d\n",dummy->nbr);
+			printf("%d Position : %d\n",dummy->nbr,dummy->position);
 			dummy = dummy->next;
 		}
-			printf("%d\n\n",dummy->nbr);	
+			printf("%d Position : %d\n\n",dummy->nbr,dummy->position);	
 	}
 
 }

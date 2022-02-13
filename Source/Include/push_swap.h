@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 02:02:58 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/13 02:24:48 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_node
 {
 	int nbr;
 	struct s_node *next;
+	int position;
 }	t_node;
 
 typedef struct s_nodelst{
