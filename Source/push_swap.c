@@ -54,34 +54,19 @@ t_node	*ft_order(t_nodelst *lst, t_node *actual_node, int i)
 {
 	t_node *hp;
 	t_node *target;
+	t_node *dummy;
 
 	hp = lst->a_head;
+	dummy = lst->a_head;
 	while(hp->next)
 	{	
-		while(hp->nbr < actual_node->nbr && hp->next)
-		{
-				printf("Acelero posiciones por ser menores a la buscada\n");
-				printf("%d\n",hp->nbr);
-				hp = hp->next;
-			
-		}
-			if (!hp->next)
-			{
-				printf("f\n");
-				return (0);
-			}
-				
-			printf("Acelero posiciones por ser menores a la buscada\n");
-			//hp = hp->next;
-		if (hp->nbr > actual_node->nbr)
-			printf("Se descubre nuevo numero superior\n");
-			//target = hp;
-		if(hp->nbr < target->nbr)
-			printf("Si se descubre un numero numero entre los dos se asigna\n");
-			//target = hp;
+		if (hp->nbr < dummy->nbr && !hp->position)
+			dummy = hp;
 		hp = hp->next;
-	}	
-	return (hp);
+	}
+	if (hp->nbr > dummy->nbr)
+		dummy = hp;	
+	return (target);
 }
 
 void	ft_generate_positions(t_nodelst *lst)
@@ -91,7 +76,7 @@ void	ft_generate_positions(t_nodelst *lst)
 	t_node *dummy;
 	int i;
 	
-	i = 2;	
+	i = 1;	
 	low	= ft_return_lowst_pointer(lst);
 	hp = lst->a_head;
 	while(hp->next)
@@ -110,10 +95,10 @@ int main(int argc, char *argv[])
 	t_nodelst *nodelst;
 	
 	nodelst = ft_manage_entry(argc, argv, nodelst);
-	// ft_find_lowerest_node(nodelst);
+	//ft_find_lowerest_node(nodelst);
 	ft_generate_positions(nodelst);
 	ft_print_stack_a(nodelst);
-	ft_print_stack_b(nodelst);
+	//ft_print_stack_b(nodelst);
     return (0);
 }
 
