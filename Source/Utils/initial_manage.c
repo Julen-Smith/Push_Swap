@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 01:55:56 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/16 20:20:19 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ void	ft_check_veracity(char **numbers)
 	}
 }
 
+
+/***
+ * 
+ * 	FT_CHECK_ORDER SOLO FUNCIONA CON NUMEROS POSITIVOS
+ *  -----------------CHECK
+ * 
+ * */
 void	ft_check_order(char **numbers)
 {
 	int i;

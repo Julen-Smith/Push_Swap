@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 02:24:48 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/16 21:18:08 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_node
 typedef struct s_nodelst{
 	t_node *a_head;
 	t_node *b_head;
+	t_node *middle;
 }	t_nodelst;
 
 void		ft_destroy_node(t_node *node);
@@ -48,4 +49,7 @@ char		**ft_args_to_string(int argc, char *argv[]);
 t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst);
 int			ft_iterate_stack(t_nodelst *nodelst, char e);
 t_node 		*ft_return_specific_node(t_nodelst *nodelst, int last, char e);
+t_node		*ft_return_lowst_pointer(t_nodelst *lst);
+void		ft_initialize_positions(t_nodelst *lst);
+t_node		*ft_return_biggst_pointer(t_nodelst *lst);
 #endif
