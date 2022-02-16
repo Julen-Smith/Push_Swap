@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/16 21:18:08 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/16 21:33:38 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,6 @@ t_node 		*ft_return_specific_node(t_nodelst *nodelst, int last, char e);
 t_node		*ft_return_lowst_pointer(t_nodelst *lst);
 void		ft_initialize_positions(t_nodelst *lst);
 t_node		*ft_return_biggst_pointer(t_nodelst *lst);
+void		ft_generate_positions(t_nodelst *nodelst);
+t_node		*ft_order(t_nodelst *lst);
 #endif
