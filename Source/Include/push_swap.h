@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/16 21:33:38 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:30:14 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_nodelst{
 	t_node *a_head;
 	t_node *b_head;
 	t_node *middle;
+	int		stacklen;
 }	t_nodelst;
 
 void		ft_destroy_node(t_node *node);

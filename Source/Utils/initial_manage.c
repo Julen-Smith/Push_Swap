@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/16 20:20:19 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:57:58 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,32 @@ void	ft_check_order(char **numbers)
 		exit(0);
 }
 
+void	ft_comprobate_duplicates(t_nodelst *nodelst)
+{
+	t_node *i;
+	t_node *u;
+	t_node *ghost_ptr;
+	t_node *last_node;
+
+	i = nodelst->a_head;
+	u = nodelst->a_head->next;
+	last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+	ghost_ptr = malloc (sizeof(t_node));
+	last_node->next = ghost_ptr;
+	while(i->next)
+	{
+		u = i->next;
+		while(u->next)
+		{
+			if (i->nbr  == u->nbr)
+				ft_perror_exit("Números duplicados");
+			u = u->next;
+		}
+		i = i->next;
+	}
+	free(ghost_ptr);	
+}
+
 t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
 {
 	char **numbers;
@@ -92,10 +118,6 @@ t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
 	ft_check_veracity(numbers);
 	ft_check_order(numbers);
 	nodelst = ft_generate_nodelst(numbers);
-	/**
-	 * @brief Construct a new return object
-	 * FALTA COMPROBAR DUPLICADOS	
-	 */
-	
+	ft_comprobate_duplicates(nodelst);
 	return(nodelst);
 }

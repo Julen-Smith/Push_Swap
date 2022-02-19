@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/19 00:37:21 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:48:16 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_check_if_we_still_have_middles(t_nodelst *nodelst)
 
 	node = nodelst->a_head;
 	ghost_pointer = malloc(sizeof(t_node));
-	last_ptr  = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+	last_ptr = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
 	last_ptr->next = ghost_pointer;
 	ghost_pointer->next = NULL;
 	while(node->next)
@@ -106,7 +106,7 @@ void ft_get_middle(t_nodelst *nodelst)
 	nodelst->middle = ft_return_node_by_pos(nodelst,middle);
 }
 
-void	push_swap(t_nodelst *nodelst)
+void	ft_push_lower_middle(t_nodelst *nodelst)
 {
 	t_node *lowst_ptr;
 	int i;
@@ -122,8 +122,41 @@ void	push_swap(t_nodelst *nodelst)
 			ft_reverse_rotate_a(nodelst);	
 		i++;
 		ft_push_b(nodelst);
-	}
+	}	
+}
 
+void		ft_return_stacklen(t_nodelst *nodelst)
+{	
+	t_node *pnt;
+	t_node *ghost_pointer;
+	t_node *last_ptr;
+	int i;
+
+
+	i  = 1;
+	pnt = nodelst->a_head;
+	ghost_pointer = malloc(sizeof(t_node));
+	last_ptr =  ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+	last_ptr->next = ghost_pointer;
+	ghost_pointer->next = NULL;
+	while(pnt->next)
+	{
+		i++;
+		pnt = pnt->next;
+	}
+	last_ptr->next = NULL;
+	free(ghost_pointer);
+	nodelst->stacklen = i;
+}
+
+void	push_swap(t_nodelst *nodelst)
+{
+	ft_return_stacklen(nodelst);
+	if (nodelst->stacklen < 10)
+	{
+		ft_push_lower_middle(nodelst);
+	
+	}
 }
 
 
