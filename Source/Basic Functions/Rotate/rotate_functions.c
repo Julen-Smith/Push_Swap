@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:48:12 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 01:54:49 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/18 20:06:25 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ void	ft_rotate_a(t_nodelst *nodelst)
 	t_node *head_node;
 	t_node *second_node;
 	t_node *last_node;
+	
+	if (nodelst->a_head)
+	{
+		head_node = nodelst->a_head;
+		second_node = head_node->next;
+		last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+		last_node->next = head_node;
+		head_node->next = NULL;
+		nodelst->a_head = second_node;
+	}
+	printf("ra\n");
 
-	head_node = nodelst->a_head;
-	second_node = head_node->next;
-	last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
-	last_node->next = head_node;
-	head_node->next = NULL;
-	nodelst->a_head = second_node;
 }
 
 void	ft_rotate_b(t_nodelst *nodelst)
@@ -40,7 +45,8 @@ void	ft_rotate_b(t_nodelst *nodelst)
 		last_node->next = head_node;
 		head_node->next = NULL;
 		nodelst->b_head = second_node;
-	}	
+	}
+	printf("rb\n");
 }
 
 void	ft_rotate_rr(t_nodelst *nodelst)
