@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:46:28 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 09:15:37 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 11:11:13 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_swap_a(t_nodelst *nodelst)
 		new_head->next = sec_dummy;
 		sec_dummy->next = connector;
 	}
-	printf("swap_a\n");	
+	printf("sa\n");	
 }
 
 void	ft_swap_b(t_nodelst *nodelst)
@@ -43,7 +43,9 @@ void	ft_swap_b(t_nodelst *nodelst)
 		nodelst->b_head = dummy;
 		nodelst->b_head->next = sec_dummy;	
 	}	
+	printf("sb\n");	
 }
+
 
 void	ft_swap_ss(t_nodelst *nodelst)
 {

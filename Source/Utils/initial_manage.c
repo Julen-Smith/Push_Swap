@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 10:34:59 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 10:46:06 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_check_veracity(char **numbers)
 		{
 			if (!ft_isdigit(numbers[i][u]))
 				 if	(numbers[i][u] != '-')
-					ft_perror_exit("Invalid character detected.");
+					ft_perror_exit("Error\n");
 			u++;
 		}
 		i++;
@@ -68,7 +68,7 @@ void	ft_comprobate_duplicates(t_nodelst *nodelst)
 		while(u->next)
 		{
 			if (i->nbr  == u->nbr)
-				ft_perror_exit("Números duplicados");
+				ft_perror_exit("Error\n");
 			u = u->next;
 		}
 		i = i->next;
@@ -82,7 +82,7 @@ t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
 	char **numbers;
 	
 	if (argc < 2)
-		ft_perror_exit("Argumentos insuficientes");
+		ft_perror_exit("Error\n");
 	if(argc == 2)
 		numbers = ft_split(argv[1],' ');
 	else

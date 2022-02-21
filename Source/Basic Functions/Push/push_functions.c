@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:44:29 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 09:22:02 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 10:54:11 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_push_a(t_nodelst *nodelst)
 			nodelst->a_head->next = NULL;
 		}			
 	}
-	printf("push_a\n");
+	printf("pa\n");
 }
 
 void	ft_push_b(t_nodelst *nodelst)
@@ -63,5 +63,5 @@ void	ft_push_b(t_nodelst *nodelst)
 			nodelst->b_head->next = NULL;
 		}	
 	}
-	printf("push_b\n");
+	printf("pb\n");
 }

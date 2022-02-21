@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 10:34:31 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 11:29:42 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	ft_push_lower_middle(t_nodelst *nodelst)
 	while(i != nodelst->middle->position +1)
 	{
 		ft_refresh_stacklen(nodelst);
-		if(ft_where_is_node_in_stack(nodelst,ft_return_node_by_pos(nodelst,i)->nbr) < nodelst->stacklen/2)
+		if(ft_where_is_node_in_stack(nodelst,ft_return_node_by_pos(nodelst,i)->nbr) <= nodelst->stacklen/2)
 			while(ft_return_node_by_pos(nodelst,i) != nodelst->a_head)	
 					ft_rotate_a(nodelst);
 		else
@@ -187,9 +187,10 @@ void	ft_order_higher_middle(t_nodelst *nodelst)
 	last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
 	while(ft_check_nodeorder(nodelst))
 	{
-		if(nodelst->a_head->position - 1 == nodelst->a_head->next->position)
+			ft_rotate_a(nodelst);
+		if(nodelst->a_head->position -1  == nodelst->a_head->next->position)
 			ft_swap_a(nodelst);
-		ft_rotate_a(nodelst);
+			ft_rotate_a(nodelst);
 	}
 	while(nodelst->b_head)
 		ft_push_a(nodelst);
@@ -249,8 +250,8 @@ int main(int argc, char *argv[])
 	ft_generate_positions(nodelst);
 	ft_get_middle(nodelst);
 	push_swap(nodelst);
-	ft_print_stack_a(nodelst);
-	ft_print_stack_b(nodelst);
+	//ft_print_stack_a(nodelst);
+	//ft_print_stack_b(nodelst);
     return (0);
 }
 
