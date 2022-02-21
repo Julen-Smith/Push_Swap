@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/19 17:57:58 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 10:34:59 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,6 @@ void	ft_check_veracity(char **numbers)
 	}
 }
 
-
-/***
- * 
- * 	FT_CHECK_ORDER SOLO FUNCIONA CON NUMEROS POSITIVOS
- *  -----------------CHECK
- * 
- * */
-void	ft_check_order(char **numbers)
-{
-	int i;
-	int u;
-	int dummy;
-
-	dummy = 0;
-	i = 0;
-	u = 0;
-	while(numbers[i])
-	{
-		if (dummy < ft_atoi(numbers[i]))
-		{
-			dummy = ft_atoi(numbers[i]);
-			u++;
-		}
-		i++;
-	}
-	if(i == u)
-		exit(0);
-}
-
 void	ft_comprobate_duplicates(t_nodelst *nodelst)
 {
 	t_node *i;
@@ -102,6 +73,7 @@ void	ft_comprobate_duplicates(t_nodelst *nodelst)
 		}
 		i = i->next;
 	}
+	last_node->next = NULL;
 	free(ghost_ptr);	
 }
 
@@ -116,8 +88,9 @@ t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
 	else
 		numbers = ft_args_to_string(argc, argv);
 	ft_check_veracity(numbers);
-	ft_check_order(numbers);
 	nodelst = ft_generate_nodelst(numbers);
+	if(!ft_check_nodeorder(nodelst))
+		exit(0);
 	ft_comprobate_duplicates(nodelst);
 	return(nodelst);
 }
