@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 10:46:06 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/23 12:34:30 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,17 @@ void	ft_comprobate_duplicates(t_nodelst *nodelst)
 	last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
 	ghost_ptr = malloc (sizeof(t_node));
 	last_node->next = ghost_ptr;
-	while(i->next)
+	ghost_ptr->next = NULL;
+	while(i && i->next)
 	{
 		u = i->next;
-		while(u->next)
+		while(u && u->next)
 		{
 			if (i->nbr  == u->nbr)
+			{
+				free(ghost_ptr);
 				ft_perror_exit("Error\n");
+			}	
 			u = u->next;
 		}
 		i = i->next;

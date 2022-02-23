@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 12:22:23 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/16 21:02:08 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/21 19:24:18 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 		res = (res * 10) + (*str++ - 48);
-	if(res * negative > 2147483647 || res * negative < -2147483648)
+	if(res * negative >= 2147483647 || res * negative <= -2147483648)
 		exit(0);
 	return (negative * res);
 }

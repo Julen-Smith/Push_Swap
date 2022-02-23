@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 09:19:34 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/23 11:55:19 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_nodelst{
 	t_node *b_head;
 	t_node *middle;
 	int		stacklen;
+	int 	chunksize;
 }	t_nodelst;
 
 void		ft_destroy_node(t_node *node);
@@ -56,4 +57,12 @@ t_node		*ft_return_biggst_pointer(t_nodelst *lst);
 void		ft_generate_positions(t_nodelst *nodelst);
 t_node		*ft_order(t_nodelst *lst);
 int			ft_check_nodeorder(t_nodelst *nodelst);
+void		ft_refresh_stacklen(t_nodelst *nodelst);
+void 		ft_get_middle(t_nodelst *nodelst);
+int			ft_check_nodeorder(t_nodelst *nodelst);
+t_node		*ft_return_node_by_pos(t_nodelst *nodelst, int position);
+void		ft_ordenate_3_stack(t_nodelst *nodelst);
+int			ft_where_is_node_in_stack(t_nodelst *nodelst, int nbr);
+void		ft_ordenate_10_stack(t_nodelst *nodelst);
+
 #endif

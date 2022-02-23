@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/13 02:59:22 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/23 08:41:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ t_nodelst	*ft_generate_nodelst(char **nbr)
 	}
 	list->b_head = NULL;
 	return (list);
+}
+
+void	ft_initialize_positions(t_nodelst *lst)
+{
+	t_node *pnt;
+	t_node *last_node;
+	t_node *ghost_pointer;
+
+	pnt = lst->a_head;
+	last_node =  ft_return_specific_node(lst,ft_iterate_stack(lst,'a'),'a');
+	ghost_pointer = malloc (sizeof(t_node));
+	last_node->next = ghost_pointer;
+	ghost_pointer->next = NULL;
+	while(pnt->next)
+	{	
+		pnt->position = -1;
+		pnt = pnt->next;
+	}
+	last_node->next = NULL;
+	free(ghost_pointer);
 }
 
 void	ft_print_stack_a(t_nodelst *nodelst)

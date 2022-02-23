@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:57:12 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/16 21:07:55 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/23 12:40:02 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ int	ft_iterate_stack(t_nodelst *nodelst, char e)
 	if (e == 'a')
 	{
 		pnt = nodelst->a_head;
-		while (pnt->next)
+		if (pnt)
 		{
-			pnt = pnt->next;
-			i++;
-		}
+			while (pnt->next)
+			{
+				pnt = pnt->next;
+				i++;
+			}
 			return (i);
+		}
 	}	
 	else
 		pnt = nodelst->b_head;
-		while (pnt->next)
+		while (pnt && pnt->next)
 		{
 			pnt = pnt->next;
 			i++;
@@ -62,60 +65,27 @@ t_node *ft_return_specific_node(t_nodelst *nodelst, int last, char e)
 	return (spec_node);
 }
 
-t_node *ft_return_lowst_pointer(t_nodelst *lst)
+int	ft_check_if_we_still_have_middles(t_nodelst *nodelst)
 {
-	t_node *pnt;
-	t_node *dummy;
-
-	pnt = lst->a_head;
-	dummy = lst->a_head;
-	while (pnt->next)
-	{
-		if (pnt->nbr < dummy->nbr)
-			dummy = pnt;
-		pnt = pnt->next;
-	}
-	if (pnt->nbr < dummy->nbr)
-		dummy = pnt;
-	dummy->position = 1;
-	return (dummy);
-}
-
-void	ft_initialize_positions(t_nodelst *lst)
-{
-	t_node *pnt;
-	t_node *last_node;
+	t_node *node;
+	t_node *last_ptr;
 	t_node *ghost_pointer;
-
-	pnt = lst->a_head;
-	last_node =  ft_return_specific_node(lst,ft_iterate_stack(lst,'a'),'a');
-	ghost_pointer = malloc (sizeof(t_node));
-	last_node->next = ghost_pointer;
+	
+	node = nodelst->a_head;
+	ghost_pointer = malloc(sizeof(t_node));
+	last_ptr = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+	last_ptr->next = ghost_pointer;
 	ghost_pointer->next = NULL;
-	while(pnt->next)
-	{	
-		pnt->position = -1;
-		pnt = pnt->next;
-	}
-	last_node->next = NULL;
-	free(ghost_pointer);
-}
-
-t_node *ft_return_biggst_pointer(t_nodelst *lst)
-{
-	t_node *pnt;
-	t_node *dummy;
-
-	pnt = lst->a_head;
-	dummy = lst->a_head;
-	while (pnt->next)
+	while(node->next)
 	{
-		if (pnt->nbr > dummy->nbr)
-			dummy = pnt;
-		pnt = pnt->next;
+		if (node->nbr < nodelst->middle->nbr)
+		{	
+			free(ghost_pointer);
+			return (1);
+		}
+		node = node->next;	
 	}
-	if (pnt->nbr > dummy->nbr)
-		dummy = pnt;
-	dummy->position = ft_iterate_stack(lst,'a') +1;
-	return (dummy);
+	last_ptr->next = NULL;
+	free(ghost_pointer);
+	return (0);
 }
