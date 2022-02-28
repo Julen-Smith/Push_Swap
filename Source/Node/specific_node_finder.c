@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:27:46 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/28 16:37:06 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:55:18 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ t_node *ft_return_lowst_pointer(t_nodelst *lst)
 	}
 	if (pnt->nbr < dummy->nbr)
 		dummy = pnt;
-	dummy->position = 1;
 	return (dummy);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/28 16:34:20 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 18:50:44 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_node
 {
 	int nbr;
 	struct s_node *next;
+	struct s_node *previus;
 	int position;
 }	t_node;
 
@@ -27,6 +28,8 @@ typedef struct s_nodelst{
 	t_node *middle;
 	int		stacklen;
 	int 	chunksize;
+	int		nbrfromtop;
+	int		nbrfrombottom;
 }	t_nodelst;
 
 void		ft_destroy_node(t_node *node);

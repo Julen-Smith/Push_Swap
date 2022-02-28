@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/28 16:34:41 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 18:52:14 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,48 @@ void	ft_ordenate_10_stack(t_nodelst *nodelst)
 		ft_refresh_stacklen(nodelst);
 	}
 	if(nodelst->stacklen == 3 && ft_check_nodeorder(nodelst))
-		ft_ordenate_3_stack(nodelst);	
+		ft_ordenate_3_stack(nodelst);
+	while(nodelst->b_head)
+		ft_push_a(nodelst);
+}
+
+void ft_find_first_coincidence_from_top(t_nodelst *nodelst,int chunksize)
+{
+	t_node *dummy;
+	int i;
+
+	dummy = nodelst->a_head;
+	i = 0;
+	while(dummy->next)
+	{
+		if (dummy->position < chunksize)
+		{	
+			i++;
+			printf(" La primera coincidencia esta en %d\n", i);
+			return ;
+		}
+		dummy = dummy->next;
+	}
+
+}
+
+//void ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize)
+//{
+
+	
+//}//
+
+void	ft_ordenate_100_stack(t_nodelst *nodelst)
+{
+	t_node * big;
+	int position;
+
+	position = 1;
+	big = ft_return_biggst_pointer(nodelst);
+	ft_refresh_stacklen(nodelst);
+	nodelst->chunksize /= 4;
+	ft_find_first_coincidence_from_top(nodelst,20);
+	
 }
 
 void	push_swap(t_nodelst *nodelst)
@@ -140,23 +181,15 @@ void	push_swap(t_nodelst *nodelst)
 		ft_ordenate_3_stack(nodelst);
 	else if (nodelst->stacklen < 10)
 		ft_ordenate_10_stack(nodelst);
-	/*else if(nodelst->stacklen < 100)
-	{
-		nodelst->chunksize = nodelst->stacklen/4;
-		initial_chunksize = nodelst->chunksize;
-		while(i != 3)
-		{			
-			if (nodelst->chunksize == nodelst->stacklen/4)
-				initial_chunksize = 0;
-			ft_push_chunk_nbr(nodelst,nodelst->chunksize, nodelst->chunksize - initial_chunksize);
-			initial_chunksize =  nodelst->stacklen/4;
-			nodelst->chunksize += initial_chunksize;
-			i++;
-		}
-	}
-	*/
+	else if(nodelst->stacklen < 100)
+		ft_ordenate_100_stack(nodelst);
 }
 
+void	ft_generate_previus_values();
+{
+
+	
+}
 
 int main(int argc, char *argv[])
 {
@@ -164,7 +197,7 @@ int main(int argc, char *argv[])
 	
 	nodelst = ft_manage_entry(argc, argv, nodelst);
 	ft_generate_positions(nodelst);
-	//printf("%d\n", nodelst->middle->nbr);
+	ft_generate_previus_values(nodelst);
 	push_swap(nodelst);
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
