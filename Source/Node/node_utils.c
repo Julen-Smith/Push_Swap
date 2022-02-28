@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:57:12 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 12:40:02 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/25 08:01:06 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_iterate_stack(t_nodelst *nodelst, char e)
 	if (e == 'a')
 	{
 		pnt = nodelst->a_head;
-		if (pnt)
+		if (pnt && pnt->next)
 		{
 			while (pnt->next)
 			{

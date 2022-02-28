@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:25:17 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 08:45:51 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:36:29 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_ordenate_3_stack(t_nodelst *nodelst)
 {
-	int middle;
+	int nbr;
 
-	middle = ft_where_is_node_in_stack(nodelst,ft_return_node_by_pos(nodelst,nodelst->middle->position)->nbr);
-	if (middle == 1 && nodelst->a_head->next->nbr < nodelst->middle->nbr)
+	ft_get_middle(nodelst);
+	printf("Middle %d\n", nodelst->middle->nbr);
+	nbr = ft_where_is_node_in_stack(nodelst,nodelst->middle->nbr);
+	if (nbr == 1 && nodelst->a_head->next->nbr < nodelst->middle->nbr)
 		ft_swap_a(nodelst);
-	else if(middle == 1 && nodelst->a_head->next->nbr > nodelst->middle->nbr)
+	else if(nbr == 1 && nodelst->a_head->next->nbr > nodelst->middle->nbr)
 		ft_reverse_rotate_a(nodelst);
-	else if(middle == 2)
+	else if(nbr == 2)
 	{
 		ft_swap_a(nodelst);
 		ft_reverse_rotate_a(nodelst);

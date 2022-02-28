@@ -6,66 +6,24 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 12:49:17 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:34:41 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Include/push_swap.h"
 
-int ft_find_the_lowerest_pos(t_nodelst *nodelst)
+t_node *ft_return_last_ptr(t_nodelst *lst)
 {
-	t_node	*pnt;
-	t_node *ghost_pointer;
-	t_node *last_ptr;
-	int position;
+	t_node *pnt;
 
-	pnt = nodelst->a_head;
-	ghost_pointer = malloc(sizeof(t_node));
-	last_ptr = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
-	last_ptr->next = ghost_pointer;
-	ghost_pointer->next = NULL;
-	while(pnt->next)
+	pnt = lst->a_head;
+	while(pnt && pnt->next)
 	{
-		if (pnt->position > pnt->next->position)
-			position = pnt->position;
 		pnt = pnt->next;
 	}
-	last_ptr->next = NULL;
-	free(ghost_pointer);
-	return (position);
+	return (pnt);
+
 }
-
-
-void	ft_ordenate_10_stack(t_nodelst *nodelst)
-{
-	t_node *lowst_ptr;
-	int i;
-
-	i = 1;
-	lowst_ptr = ft_return_biggst_pointer(nodelst);
-	while(ft_check_nodeorder(nodelst) && nodelst->stacklen > 3)
-	{
-		if(ft_where_is_node_in_stack(nodelst,ft_return_node_by_pos(nodelst,i)->nbr) <= nodelst->stacklen/2)
-			while(ft_return_node_by_pos(nodelst,i) != nodelst->a_head && nodelst->stacklen > 3)	
-			{
-				ft_refresh_stacklen(nodelst);
-				ft_rotate_a(nodelst);
-			}
-		else
-			while(ft_return_node_by_pos(nodelst,i) != nodelst->a_head && nodelst->stacklen > 3)	
-			{	
-				ft_reverse_rotate_a(nodelst);
-				ft_refresh_stacklen(nodelst);
-			}
-		ft_push_b(nodelst);
-		i++;
-		ft_refresh_stacklen(nodelst);
-	}
-	if(nodelst->stacklen == 3 && ft_check_nodeorder(nodelst))
-		ft_ordenate_3_stack(nodelst);
-		
-}
-
 int	ft_count_key_number_values(t_nodelst *nodelst, int chunksize, int max)
 {
 	t_node *i;
@@ -107,6 +65,68 @@ void	ft_push_chunk_nbr(t_nodelst *nodelst, int chunksize, int lastchunksize)
 	}
 }
 
+int ft_find_the_lowerest_pos(t_nodelst *nodelst)
+{
+	t_node	*pnt;
+	t_node *ghost_pointer;
+	t_node *last_ptr;
+	int position;
+
+	pnt = nodelst->a_head;
+	ghost_pointer = malloc(sizeof(t_node));
+	last_ptr = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+	last_ptr->next = ghost_pointer;
+	ghost_pointer->next = NULL;
+	while(pnt->next)
+	{
+		if (pnt->position > pnt->next->position)
+			position = pnt->position;
+		pnt = pnt->next;
+	}
+	last_ptr->next = NULL;
+	free(ghost_pointer);
+	return (position);
+}
+
+int	ft_is_in_the_middle_of_the_stack(t_nodelst *nodelst, int nodepos)
+{
+	int middlestacklen;
+	
+	ft_refresh_stacklen(nodelst);
+	middlestacklen = nodelst->stacklen/2;
+	if (middlestacklen == 3)
+		return (0);
+	if(ft_where_is_node_in_stack(nodelst,ft_return_node_by_pos(nodelst,nodepos)->nbr) <= middlestacklen)
+		return (1);
+	else
+		return (0);
+		
+	
+}
+
+void	ft_ordenate_10_stack(t_nodelst *nodelst)
+{
+	t_node *lowst_ptr;
+	int i;
+
+	i = 1;
+	lowst_ptr = ft_return_biggst_pointer(nodelst);
+	while(ft_check_nodeorder(nodelst) && nodelst->stacklen > 3)
+	{
+		if(ft_is_in_the_middle_of_the_stack(nodelst,i))
+			while(ft_return_node_by_pos(nodelst,i) != nodelst->a_head && nodelst->stacklen > 3)	
+				ft_rotate_a(nodelst);
+		else
+			while(ft_return_node_by_pos(nodelst,i) != nodelst->a_head && nodelst->stacklen > 3)		
+				ft_reverse_rotate_a(nodelst);
+		i++;
+		ft_push_b(nodelst);
+		ft_refresh_stacklen(nodelst);
+	}
+	if(nodelst->stacklen == 3 && ft_check_nodeorder(nodelst))
+		ft_ordenate_3_stack(nodelst);	
+}
+
 void	push_swap(t_nodelst *nodelst)
 {
 	int i;
@@ -144,11 +164,8 @@ int main(int argc, char *argv[])
 	
 	nodelst = ft_manage_entry(argc, argv, nodelst);
 	ft_generate_positions(nodelst);
-	ft_get_middle(nodelst);
-	printf("%d\n", nodelst->middle->nbr);
-	
-	
-	//push_swap(nodelst);
+	//printf("%d\n", nodelst->middle->nbr);
+	push_swap(nodelst);
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
     return (0);

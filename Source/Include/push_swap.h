@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 11:55:19 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:34:20 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ t_node		*ft_return_node_by_pos(t_nodelst *nodelst, int position);
 void		ft_ordenate_3_stack(t_nodelst *nodelst);
 int			ft_where_is_node_in_stack(t_nodelst *nodelst, int nbr);
 void		ft_ordenate_10_stack(t_nodelst *nodelst);
+t_node		*ft_return_last_ptr(t_nodelst *lst);
 
 #endif
