@@ -23,7 +23,7 @@ int	ft_iterate_stack(t_nodelst *nodelst, char e)
 		pnt = nodelst->a_head;
 		if (pnt && pnt->next)
 		{
-			while (pnt->next)
+			while (pnt && pnt->next)
 			{
 				pnt = pnt->next;
 				i++;
@@ -49,19 +49,27 @@ t_node *ft_return_specific_node(t_nodelst *nodelst, int last, char e)
 	i = 0;
 	if(e == 'a')
 	{
-		spec_node = nodelst->a_head;
-		while(i != last)
+		if (nodelst->a_head)
 		{
-			spec_node = spec_node->next;
-			i++;
+			spec_node = nodelst->a_head;
+			while(i != last && spec_node && spec_node->next)
+			{
+				spec_node = spec_node->next;
+				i++;
+			}
 		}
+		
 	}else
-		spec_node = nodelst->b_head;
-		while(i != last)
+		if (nodelst->b_head)
 		{
-			spec_node = spec_node->next;
-			i++;
+			spec_node = nodelst->b_head;
+			while(i != last && spec_node && spec_node->next)
+			{
+				spec_node = spec_node->next;
+				i++;
+			}
 		}
+		
 	return (spec_node);
 }
 

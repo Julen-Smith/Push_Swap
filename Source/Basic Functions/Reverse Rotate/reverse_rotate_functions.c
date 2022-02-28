@@ -21,7 +21,7 @@ void	ft_reverse_rotate_a(t_nodelst *nodelst)
 	if(nodelst->a_head)
 	{
 		head_node = nodelst->a_head;
-		last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
+		last_node = ft_return_last_ptr(nodelst);
 		penultimate = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a')-1,'a');
 		nodelst->a_head = last_node;
 		last_node->next = head_node;

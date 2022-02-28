@@ -18,51 +18,8 @@ t_node *ft_return_last_ptr(t_nodelst *lst)
 
 	pnt = lst->a_head;
 	while(pnt && pnt->next)
-	{
 		pnt = pnt->next;
-	}
 	return (pnt);
-
-}
-int	ft_count_key_number_values(t_nodelst *nodelst, int chunksize, int max)
-{
-	t_node *i;
-	int u;
-	t_node *ghost_ptr;
-	t_node *last_node;
-
-	i = nodelst->a_head;
-	last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
-	ghost_ptr = malloc (sizeof(t_node));
-	last_node->next = ghost_ptr;
-	while(i->next)
-	{
-		if(i->position <= chunksize && i->position >= max)
-			u++;
-		i = i->next;
-	}
-	last_node->next = NULL;
-	free(ghost_ptr);	
-	return (u);
-}
-
-void	ft_push_chunk_nbr(t_nodelst *nodelst, int chunksize, int lastchunksize)
-{
-	int max;
-	int i;
-
-	i = 1;
-	max = ft_count_key_number_values(nodelst, chunksize, lastchunksize);
-	while(i != max)
-	{
-		if(nodelst->a_head->position < chunksize)
-		{
-			ft_push_b(nodelst);
-			i++;
-		}
-		else
-			ft_rotate_a(nodelst);
-	}
 }
 
 int ft_find_the_lowerest_pos(t_nodelst *nodelst)
@@ -100,8 +57,6 @@ int	ft_is_in_the_middle_of_the_stack(t_nodelst *nodelst, int nodepos)
 		return (1);
 	else
 		return (0);
-		
-	
 }
 
 void	ft_ordenate_10_stack(t_nodelst *nodelst)
@@ -136,36 +91,98 @@ void ft_find_first_coincidence_from_top(t_nodelst *nodelst,int chunksize)
 
 	dummy = nodelst->a_head;
 	i = 0;
-	while(dummy->next)
+	while(dummy && dummy->next)
 	{
 		if (dummy->position < chunksize)
 		{	
-			i++;
-			printf(" La primera coincidencia esta en %d\n", i);
+			nodelst->nbrfromtop = i;
 			return ;
 		}
+		i++;
 		dummy = dummy->next;
 	}
-
 }
 
-//void ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize)
-//{
+void	ft_generate_previus_values(t_nodelst *nodelst)
+{
+	t_node *node;
+	t_node *nodenext;
 
-	
-//}//
+	if(nodelst->a_head)
+	{
+		node = nodelst->a_head;
+		node->previus = NULL;
+		nodenext = nodelst->a_head->next;
+		while(nodenext && node && nodenext->next)
+		{
+			nodenext->previus = node;
+			node = node->next;
+			nodenext = nodenext->next;
+		}
+		if(nodenext && node)
+			nodenext->previus = node;
+	}
+}
+
+void ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize)
+{
+	t_node *node;
+	int i;
+
+	i = 1;
+	node = ft_return_last_ptr(nodelst);
+	ft_generate_previus_values(nodelst);
+	while(node && node->previus)
+	{
+		if (node->position < chunksize)
+		{
+			nodelst->nbrfrombottom = i;
+			return ;
+		}		
+		i++;
+		node = node->previus;
+	}
+}
 
 void	ft_ordenate_100_stack(t_nodelst *nodelst)
 {
 	t_node * big;
+	int initial_chunk;
 	int position;
+	int i;
 
-	position = 1;
+	i = 0;
+	position = 0;
 	big = ft_return_biggst_pointer(nodelst);
 	ft_refresh_stacklen(nodelst);
-	nodelst->chunksize /= 4;
-	ft_find_first_coincidence_from_top(nodelst,20);
-	
+	nodelst->chunksize = nodelst->stacklen/ 4;
+	initial_chunk = nodelst->chunksize;
+	while(nodelst->a_head)
+	{
+		i = 0;
+		while(i != initial_chunk)
+		{
+			ft_find_first_coincidence_from_top(nodelst,nodelst->chunksize);
+			ft_find_first_coincidence_from_bottom(nodelst,nodelst->chunksize);
+			if(nodelst->nbrfromtop < nodelst->nbrfrombottom)
+				while(nodelst->nbrfromtop != 0)
+				{
+					ft_rotate_a(nodelst);
+					nodelst->nbrfromtop--;
+				}	
+			else
+				while(nodelst->nbrfrombottom != 0)
+				{
+					ft_reverse_rotate_b(nodelst);
+					nodelst->nbrfrombottom--;
+				}
+			if (nodelst->a_head)
+				printf("El numero pusheado es %d con posición %d\n",nodelst->a_head->nbr, nodelst->a_head->position);
+			ft_push_b(nodelst);
+			i++;
+		}
+		nodelst->chunksize += initial_chunk;
+	}
 }
 
 void	push_swap(t_nodelst *nodelst)
@@ -185,23 +202,17 @@ void	push_swap(t_nodelst *nodelst)
 		ft_ordenate_100_stack(nodelst);
 }
 
-void	ft_generate_previus_values();
-{
-
-	
-}
-
 int main(int argc, char *argv[])
 {
 	t_nodelst *nodelst;
 	
 	nodelst = ft_manage_entry(argc, argv, nodelst);
 	ft_generate_positions(nodelst);
-	ft_generate_previus_values(nodelst);
 	push_swap(nodelst);
 	ft_print_stack_a(nodelst);
 	ft_print_stack_b(nodelst);
-    return (0);
+	
+	return (0);
 }
 
 /*

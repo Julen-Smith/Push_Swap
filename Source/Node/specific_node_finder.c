@@ -21,23 +21,13 @@ int	ft_where_is_node_in_stack(t_nodelst *nodelst, int nbr)
 
 	i  = 1;
 	pnt = nodelst->a_head;
-	ghost_pointer = malloc(sizeof(t_node));
-	last_ptr =	ft_return_last_ptr(nodelst);
-	last_ptr->next = ghost_pointer;
-	ghost_pointer->next = NULL;
 	while(pnt && pnt->next)
 	{
 		if (pnt && pnt->nbr == nbr)
-		{
-			last_ptr->next = NULL;
-			free(ghost_pointer);
 			return (i);
-		}		
 		i++;
 		pnt = pnt->next;
 	}
-	last_ptr->next = NULL;
-	free(ghost_pointer);
 	return (i);
 }
 

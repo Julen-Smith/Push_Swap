@@ -52,12 +52,15 @@ void ft_get_middle(t_nodelst *nodelst)
 	big = ft_return_biggst_pointer(nodelst);
 	small = ft_return_lowst_pointer(nodelst);
 	head = nodelst->a_head;
+	nodelst->middle = nodelst->a_head;
 	while(head->next)
 	{
 		if (head->nbr < big->nbr && head->nbr > small->nbr)
 			nodelst->middle = head;
 		head = head->next;		
 	}
+	if (head->nbr < nodelst->middle->nbr)
+		nodelst->middle = head;
 }
 
 void		ft_refresh_stacklen(t_nodelst *nodelst)
