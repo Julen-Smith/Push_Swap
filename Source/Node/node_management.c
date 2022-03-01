@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 08:41:56 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/01 20:36:08 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,10 @@ void	ft_print_stack_b(t_nodelst *nodelst)
 		while(dummy->next)
 		{
 			printf("%d Position : %d\n",dummy->nbr,dummy->position);
+		//	if (dummy->previus)
+		//		printf("Previus nbr : %d\n",dummy->previus->nbr);
+		//	else
+		//		printf("NULL\n");
 			dummy = dummy->next;
 		}
 			printf("%d Position : %d\n\n",dummy->nbr,dummy->position);	

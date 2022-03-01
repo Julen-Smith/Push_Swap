@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/28 18:50:44 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/01 20:11:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			ft_iterate_stack(t_nodelst *nodelst, char e);
 t_node 		*ft_return_specific_node(t_nodelst *nodelst, int last, char e);
 t_node		*ft_return_lowst_pointer(t_nodelst *lst);
 void		ft_initialize_positions(t_nodelst *lst);
-t_node		*ft_return_biggst_pointer(t_nodelst *lst);
+t_node		*ft_return_biggst_pointer(t_nodelst *lst, char e);
 void		ft_generate_positions(t_nodelst *nodelst);
 t_node		*ft_order(t_nodelst *lst);
 int			ft_check_nodeorder(t_nodelst *nodelst);
@@ -68,5 +68,16 @@ void		ft_ordenate_3_stack(t_nodelst *nodelst);
 int			ft_where_is_node_in_stack(t_nodelst *nodelst, int nbr);
 void		ft_ordenate_10_stack(t_nodelst *nodelst);
 t_node		*ft_return_last_ptr(t_nodelst *lst);
-
+void		ft_ordenate_100_stack(t_nodelst *nodelst);
+void		ft_ordenate_100_last_part(t_nodelst *nodelst);
+void		ft_numbers_return_to_stack_a(t_nodelst *nodelst);
+void		ft_generate_previus_values(t_nodelst *nodelst);
+void		ft_generate_previus_values_on_b(t_nodelst *nodelst);
+int			ft_is_in_the_middle_of_the_stack(t_nodelst *nodelst, int nodepos);
+int			ft_calculate_middle_pos(t_nodelst *lst,int nodepos);
+void		ft_find_first_coincidence_from_top(t_nodelst *nodelst,int chunksize);
+void		ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize);
+void		ft_find_moves_from_top(t_nodelst *nodelst,int position);
+void		ft_find_moves_from_bottom(t_nodelst *nodelst,int position);
+t_node		*ft_return_last_ptr_b_edition(t_nodelst *lst);
 #endif

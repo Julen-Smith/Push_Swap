@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:44:29 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 10:54:11 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/01 08:53:48 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_push_a(t_nodelst *nodelst)
 		if (b_head_pointer->next)		            //si primer elemento de b tiene algo detras. Se convierte en la cabeza.
 			nodelst->b_head = b_head_pointer->next;
 		else
-			nodelst->b_head = NULL;              //si la cabeza de a tiene algo
+			nodelst->b_head = NULL;              //si la cabeza de b tiene algo
 		if(nodelst->a_head)
 		{
 			a_head_pointer = nodelst->a_head;	//a dummy lo coje

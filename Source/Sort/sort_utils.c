@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:26:17 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/28 17:26:20 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/01 13:22:24 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void ft_get_middle(t_nodelst *nodelst)
 	int middle;
 
 	middle = 0;
-	big = ft_return_biggst_pointer(nodelst);
+	big = ft_return_biggst_pointer(nodelst,'a');
 	small = ft_return_lowst_pointer(nodelst);
 	head = nodelst->a_head;
 	nodelst->middle = nodelst->a_head;
