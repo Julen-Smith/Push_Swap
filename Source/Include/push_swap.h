@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:53 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/01 20:11:56 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/02 10:22:02 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void		ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize);
 void		ft_find_moves_from_top(t_nodelst *nodelst,int position);
 void		ft_find_moves_from_bottom(t_nodelst *nodelst,int position);
 t_node		*ft_return_last_ptr_b_edition(t_nodelst *lst);
+void		ft_refresh_stacklen_b(t_nodelst *nodelst);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 12:34:30 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/02 09:40:51 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
 	char **numbers;
 	
 	if (argc < 2)
-		ft_perror_exit("Error\n");
+		exit(0);
+	if (argv[1][0] == '\0')
+		exit(0);
 	if(argc == 2)
 		numbers = ft_split(argv[1],' ');
 	else

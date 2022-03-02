@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:26:17 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/01 13:22:24 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/02 10:19:20 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,29 @@ void		ft_refresh_stacklen(t_nodelst *nodelst)
 
 	i = 1;
 	pnt = nodelst->a_head;
-	ghost_pointer = malloc(sizeof(t_node));
-	last_ptr =  ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
-	last_ptr->next = ghost_pointer;
-	ghost_pointer->next = NULL;
+	last_ptr =   ft_return_last_ptr(nodelst);
 	while(pnt->next)
 	{
 		i++;
 		pnt = pnt->next;
 	}
-	last_ptr->next = NULL;
-	free(ghost_pointer);
-	nodelst->stacklen = i - 1;
+	nodelst->stacklen = i;
+}
+
+void		ft_refresh_stacklen_b(t_nodelst *nodelst)
+{	
+	t_node *pnt;
+	t_node *ghost_pointer;
+	t_node *last_ptr;
+	int i;
+
+	i = 1;
+	pnt = nodelst->b_head;
+	last_ptr =  ft_return_last_ptr(nodelst);
+	while(pnt->next)
+	{
+		i++;
+		pnt = pnt->next;
+	}
+	nodelst->stacklen = i;
 }
