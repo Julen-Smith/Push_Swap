@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 13:14:56 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:45:01 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_swap(t_nodelst *nodelst)
 		ft_swap_a(nodelst);
 	else if (nodelst->stacklen == 3)
 		ft_ordenate_3_stack(nodelst);
-	else if (nodelst->stacklen < 10)
+	else if (nodelst->stacklen <= 10)
 		ft_ordenate_10_stack(nodelst);
 	else if (nodelst->stacklen <= 100)
 		ft_ordenate_100_stack(nodelst);
