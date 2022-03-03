@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:58:07 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/02 12:30:07 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 08:45:42 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ft_find_first_coincidence_from_bottom(t_nodelst *nodelst,int chunksize)
 *
 */
 
-void ft_find_moves_from_top(t_nodelst *nodelst, int position)
+int ft_find_moves_from_top(t_nodelst *nodelst, int position)
 {
 	t_node *dummy;
 	int i;
@@ -75,19 +75,19 @@ void ft_find_moves_from_top(t_nodelst *nodelst, int position)
 	while(dummy && dummy->next)
 	{
 		if (dummy->position == position)
-		{	
-			printf("position dummy %d original position %d\n",dummy->position,position);
-			printf("Head nbr %d  Movimientos %d\n",nodelst->b_head->position,i);
-			printf("Dummy number %d\n",dummy->position);
-			nodelst->nbrfromtop = i;
-				return ;
-		}
+		{
+			printf("Encuentro coincidencia en top con la posición %d\n",dummy->position);
+			//ft_print_stack_b(nodelst);
+			printf("He dado estas vueltas : %d\n",i);
+			return (i);
+		}	
 		i++;
 		dummy = dummy->next;
 	}
+	return (i);
 }
 
-void ft_find_moves_from_bottom(t_nodelst *nodelst,int position)
+int	ft_find_moves_from_bottom(t_nodelst *nodelst,int position)
 {
 	t_node *node;
 	int i;
@@ -98,12 +98,9 @@ void ft_find_moves_from_bottom(t_nodelst *nodelst,int position)
 	while(node && node->previus)
 	{	
 		if (node->position == position)
-		{
-			nodelst->nbrfrombottom = i;
-			return ;
-		}	
+			return (i);
 		i++;
 		node = node->previus;
 	}
-	
+	return (i);
 }

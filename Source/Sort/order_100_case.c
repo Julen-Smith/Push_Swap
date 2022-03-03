@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:55:17 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/02 18:24:41 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 08:54:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,42 @@ void	ft_numbers_return_to_stack_a(t_nodelst *nodelst)
 {
 	int i;
 	int big;
+	int top;
+	int bot;
 
+	top = 0;
+	bot = 0;
 	big = ft_return_biggst_pointer(nodelst,'b')->position;
 	big = ft_return_the_ordenate_chunk_to_a(nodelst, big);
-
 	while(big != 0 && nodelst->b_head)
 	{	
 		ft_refresh_stacklen_b(nodelst);
-		printf("Stacklen %d\n", nodelst->stacklen);
-		ft_find_moves_from_top(nodelst,big);
-		ft_find_moves_from_bottom(nodelst,big);	
-		printf("Ft find  moves from top %d\n",nodelst->nbrfromtop);
-		printf("Ft find moves from bot %d\n",nodelst->nbrfrombottom);
-		ft_push_a(nodelst);
-		big--;
+		top = ft_find_moves_from_top(nodelst,big);
+		bot = ft_find_moves_from_bottom(nodelst,big);
+		if (nodelst->b_head && nodelst->b_head->position != big)
+		{
+			if(top <= bot)
+				while(nodelst->b_head->position != big)
+					ft_rotate_b(nodelst);
+			else
+				while(nodelst->b_head->position != big)
+					ft_reverse_rotate_b(nodelst);
+		}
+		if(nodelst->b_head->position == big)
+		{
+				ft_push_a(nodelst);
+				big--;
+		}		
 	}
-
+}
 /*
 	while (big != 1)
 	{
 		
 		if (nodelst->b_head && nodelst->b_head->position != big)
 		{
+			top = ft_find_moves_from_top(nodelst,big);
+			bot = ft_find_moves_from_bottom(nodelst,big);	
 			if (nodelst->b_head->position != big)
 				if (nodelst->b_head->position < nodelst->b_head->next->position)
 					ft_swap_b(nodelst);
@@ -61,25 +75,26 @@ void	ft_numbers_return_to_stack_a(t_nodelst *nodelst)
 				while(nodelst->nbrfromtop != 0 && nodelst->b_head->position != big)
 				{
 					ft_rotate_b(nodelst);
-					nodelst->nbrfromtop--;
+					top--;
 				}	
 			else
 				while(nodelst->nbrfrombottom != 0 && nodelst->b_head->position != big)
 				{
 					ft_reverse_rotate_b(nodelst);	
-					nodelst->nbrfrombottom--;
+					bot--;
 				}
 		}else
 			if (nodelst->b_head->position == big)
 			{
 				ft_push_a(nodelst);	
+				big--;		
 			}
-			big--;				
+					
 	}
 	ft_push_a(nodelst);
-	*/
+	
 }
-
+*/
 void ft_ordenate_100_last_part(t_nodelst *nodelst)
 {
 	int i;
