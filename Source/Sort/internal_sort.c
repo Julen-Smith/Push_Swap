@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:09:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/01 20:18:15 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 10:29:28 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 t_node	*ft_order(t_nodelst *lst)
 {
-	t_node *hp;
-	t_node *target;
-	t_node *dummy;
-	t_node *last_node;
-	t_node *ghost_pointer;
+	t_node	*hp;
+	t_node	*target;
+	t_node	*dummy;
+	t_node	*last_node;
+	t_node	*ghost_pointer;
 
 	hp = lst->a_head;
-	dummy = ft_return_biggst_pointer(lst,'a');
-	last_node =  ft_return_specific_node(lst,ft_iterate_stack(lst,'a'),'a');
+	dummy = ft_return_biggst_pointer(lst, 'a');
+	last_node = ft_return_specific_node(lst, ft_iterate_stack(lst, 'a'), 'a');
 	ghost_pointer = malloc (sizeof(t_node));
 	last_node->next = ghost_pointer;
 	ghost_pointer->next = NULL;
-	while(hp->next)
+	while (hp->next)
 	{	
-		if(hp->position < 0)
+		if (hp->position < 0)
 		{
 			if (hp->nbr < dummy->nbr)
 				dummy = hp;
@@ -42,48 +42,48 @@ t_node	*ft_order(t_nodelst *lst)
 
 void	ft_generate_positions(t_nodelst *lst)
 {
-	t_node *hp;
-	t_node *dummy;
-	t_node *last_node;
-	t_node *ghost_pointer;
-	int i;
-	
-	i = 1;	
+	t_node	*hp;
+	t_node	*dummy;
+	t_node	*last_node;
+	t_node	*ghost_pointer;
+	int		i;
+
+	i = 1;
 	hp = lst->a_head;
 	ft_initialize_positions(lst);
-	while(hp && hp->next)
+	while (hp && hp->next)
 	{
 		dummy = ft_order(lst);
 		dummy->position = i;
 		i++;
-		hp = hp->next;	
+		hp = hp->next;
 	}
-	ft_return_biggst_pointer(lst,'a')->position = i;
+	ft_return_biggst_pointer(lst, 'a')->position = i;
 }
 
-t_node *ft_return_last_ptr(t_nodelst *lst)
+t_node	*ft_return_last_ptr(t_nodelst *lst)
 {
-	t_node *pnt;
+	t_node	*pnt;
 
 	pnt = lst->a_head;
-	while(pnt && pnt->next)
+	while (pnt && pnt->next)
 		pnt = pnt->next;
 	return (pnt);
 }
 
-int ft_find_the_lowerest_pos(t_nodelst *nodelst)
+int	ft_find_the_lowerest_pos(t_nodelst *nodelst)
 {
 	t_node	*pnt;
-	t_node *ghost_pointer;
-	t_node *last_ptr;
-	int position;
+	t_node	*ghost_pointer;
+	t_node	*last_ptr;
+	int		position;
 
 	pnt = nodelst->a_head;
 	ghost_pointer = malloc(sizeof(t_node));
 	last_ptr = ft_return_last_ptr(nodelst);
 	last_ptr->next = ghost_pointer;
 	ghost_pointer->next = NULL;
-	while(pnt->next)
+	while (pnt->next)
 	{
 		if (pnt->position > pnt->next->position)
 			position = pnt->position;
@@ -94,13 +94,13 @@ int ft_find_the_lowerest_pos(t_nodelst *nodelst)
 	return (position);
 }
 
-t_node *ft_return_last_ptr_b_edition(t_nodelst *lst)
+t_node	*ft_return_last_ptr_b_edition(t_nodelst *lst)
 {
-	t_node *pnt;
+	t_node	*pnt;
 
-	if(lst->b_head)
+	if (lst->b_head)
 		pnt = lst->b_head;
-	while(pnt && pnt->next)
+	while (pnt && pnt->next)
 		pnt = pnt->next;
 	return (pnt);
 }

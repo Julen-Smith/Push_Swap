@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 12:22:23 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/21 19:24:18 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 11:55:21 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_is_space(char c)
 int	ft_atoi(const char *str)
 {
 	long long	res;
-	int	negative;
+	int			negative;
 
 	negative = 1;
 	res = 0;
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 		res = (res * 10) + (*str++ - 48);
-	if(res * negative >= 2147483647 || res * negative <= -2147483648)
+	if (res * negative > 2147483647 || res * negative < -2147483648)
 		exit(0);
 	return (negative * res);
 }

@@ -6,45 +6,44 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:48:12 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/23 09:27:10 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 11:07:01 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Include/push_swap.h"
 
-void	ft_rotate_a(t_nodelst *nodelst)
+void	ft_rotate_a(t_nodelst *lst)
 {
-	t_node *head_node;
-	t_node *second_node;
-	t_node *last_node;
-	
-	if (nodelst->a_head)
+	t_node	*head_node;
+	t_node	*second_node;
+	t_node	*ln;
+
+	if (lst->a_head)
 	{
-		head_node = nodelst->a_head;
+		head_node = lst->a_head;
 		second_node = head_node->next;
-		last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'a'),'a');
-		last_node->next = head_node;
+		ln = ft_return_specific_node(lst, ft_iterate_stack(lst, 'a'), 'a');
+		ln->next = head_node;
 		head_node->next = NULL;
-		nodelst->a_head = second_node;
+		lst->a_head = second_node;
 	}
 	printf("ra\n");
-
 }
 
-void	ft_rotate_b(t_nodelst *nodelst)
+void	ft_rotate_b(t_nodelst *lst)
 {
-	t_node *head_node;
-	t_node *second_node;
-	t_node *last_node;
+	t_node	*head_node;
+	t_node	*second_node;
+	t_node	*ln;
 
-	if(nodelst->b_head)
+	if (lst->b_head)
 	{
-		head_node = nodelst->b_head;
+		head_node = lst->b_head;
 		second_node = head_node->next;
-		last_node = ft_return_specific_node(nodelst,ft_iterate_stack(nodelst,'b'),'b');
-		last_node->next = head_node;
+		ln = ft_return_specific_node(lst, ft_iterate_stack(lst, 'b'), 'b');
+		ln->next = head_node;
 		head_node->next = NULL;
-		nodelst->b_head = second_node;
+		lst->b_head = second_node;
 	}
 	printf("rb\n");
 }

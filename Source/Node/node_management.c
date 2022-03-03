@@ -6,15 +6,15 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/01 20:36:08 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 11:50:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/push_swap.h"
 
-t_node *ft_create_node()
+t_node	*ft_create_node(void)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = malloc (sizeof(t_node));
 	node->next = NULL;
@@ -28,17 +28,17 @@ void	ft_destroy_node(t_node *node)
 
 t_nodelst	*ft_generate_nodelst(char **nbr)
 {
-	t_nodelst *list;
-	t_node *last;
-	t_node *new;
-	int i;	
+	t_nodelst	*list;
+	t_node		*last;
+	t_node		*new;
+	int			i;	
 
 	i = 1;
 	list = malloc(sizeof(t_nodelst));
 	list->a_head = ft_create_node();
 	list->a_head->nbr = ft_atoi(nbr[0]);
 	last = list->a_head;
-	while(nbr[i])
+	while (nbr[i])
 	{
 		new = ft_create_node();
 		last->next = new;
@@ -52,39 +52,39 @@ t_nodelst	*ft_generate_nodelst(char **nbr)
 
 void	ft_initialize_positions(t_nodelst *lst)
 {
-	t_node *pnt;
-	t_node *last_node;
-	t_node *ghost_pointer;
+	t_node	*pnt;
+	t_node	*lp;
+	t_node	*ghost_pointer;
 
 	pnt = lst->a_head;
-	last_node =  ft_return_specific_node(lst,ft_iterate_stack(lst,'a'),'a');
+	lp = ft_return_specific_node(lst, ft_iterate_stack(lst, 'a'), 'a');
 	ghost_pointer = malloc (sizeof(t_node));
-	last_node->next = ghost_pointer;
+	lp->next = ghost_pointer;
 	ghost_pointer->next = NULL;
-	while(pnt->next)
+	while (pnt->next)
 	{	
 		pnt->position = -1;
 		pnt = pnt->next;
 	}
-	last_node->next = NULL;
+	lp->next = NULL;
 	free(ghost_pointer);
 }
 
 void	ft_print_stack_a(t_nodelst *nodelst)
 {
-	t_node  *dummy;
+	t_node	*dummy;
+
 	printf("STACK A\n\n");
-	if(nodelst->a_head)
+	if (nodelst->a_head)
 	{
 		dummy = nodelst->a_head;
-		while(dummy->next)
+		while (dummy->next)
 		{
-			printf("%d Position : %d\n",dummy->nbr,dummy->position);
+			printf("%d Position : %d\n", dummy->nbr, dummy->position);
 			dummy = dummy->next;
 		}
-			printf("%d Position : %d\n\n",dummy->nbr,dummy->position);	
+		printf("%d Position : %d\n\n", dummy->nbr, dummy->position);	
 	}
-
 }
 
 void	ft_print_stack_b(t_nodelst *nodelst)

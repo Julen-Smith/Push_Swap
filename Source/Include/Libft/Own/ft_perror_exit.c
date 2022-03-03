@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 09:07:05 by jsmith            #+#    #+#             */
-/*   Updated: 2022/02/01 09:07:51 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 10:45:46 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	ft_perror_exit(char *s)
 	if (!(s))
 		return ;
 	write(1, s, ft_strlen(s));
-    exit (0);
+	exit (0);
 }

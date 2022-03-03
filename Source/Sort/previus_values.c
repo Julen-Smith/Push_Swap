@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:53:50 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/01 20:03:17 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 10:16:29 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,43 @@
 
 void	ft_generate_previus_values(t_nodelst *nodelst)
 {
-	t_node *node;
-	t_node *nodenext;
+	t_node	*node;
+	t_node	*nodenext;
 
-	if(nodelst->a_head)
+	if (nodelst->a_head)
 	{
 		node = nodelst->a_head;
 		node->previus = NULL;
 		nodenext = nodelst->a_head->next;
-		while(nodenext && node && nodenext->next)
+		while (nodenext && node && nodenext->next)
 		{
 			nodenext->previus = node;
 			node = node->next;
 			nodenext = nodenext->next;
 		}
-		if(nodenext && node)
+		if (nodenext && node)
 			nodenext->previus = node;
 	}
 }
 
 void	ft_generate_previus_values_on_b(t_nodelst *nodelst)
 {
-	t_node *node;
-	t_node *nodenext;
+	t_node	*node;
+	t_node	*nodenext;
 
-	if(nodelst->b_head)
+	if (nodelst->b_head)
 	{
 		node = nodelst->b_head;
 		node->previus = NULL;
 		if (nodelst->b_head->next)
 			nodenext = nodelst->b_head->next;
-		while(nodenext && node && nodenext->next)
+		while (nodenext && node && nodenext->next)
 		{
 			nodenext->previus = node;
 			node = node->next;
 			nodenext = nodenext->next;
 		}
-		if(nodenext && node)
+		if (nodenext && node)
 			nodenext->previus = node;
 	}
 }
