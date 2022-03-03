@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 07:57:04 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 08:44:57 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 08:55:21 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
 	nodelst = ft_manage_entry(argc, argv, nodelst);
 	ft_generate_positions(nodelst);
 	push_swap(nodelst);
-	ft_print_stack_a(nodelst);
-	ft_print_stack_b(nodelst);
+	//ft_print_stack_a(nodelst);
+	//ft_print_stack_b(nodelst);
 	return (0);
 }
 

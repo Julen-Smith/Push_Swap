@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:58:07 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 08:45:42 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 08:57:25 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,7 @@ int ft_find_moves_from_top(t_nodelst *nodelst, int position)
 	while(dummy && dummy->next)
 	{
 		if (dummy->position == position)
-		{
-			printf("Encuentro coincidencia en top con la posición %d\n",dummy->position);
-			//ft_print_stack_b(nodelst);
-			printf("He dado estas vueltas : %d\n",i);
 			return (i);
-		}	
 		i++;
 		dummy = dummy->next;
 	}
