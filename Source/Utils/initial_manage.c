@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:56:45 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 11:35:25 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:15:04 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ void	ft_comprobate_duplicates(t_nodelst *nodelst)
 	}
 }
 
-t_nodelst	*ft_manage_entry(int argc, char *argv[], t_nodelst *nodelst)
+t_nodelst	*ft_manage_entry(int argc, char *argv[])
 {
-	int		i;
-	char	**numbers;
+	int			i;
+	char		**numbers;
+	t_nodelst	*nodelst;
 
 	i = 0;
 	if (argc < 2)

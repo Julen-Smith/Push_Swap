@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 12:22:18 by jsmith            #+#    #+#             */
-/*   Updated: 2021/05/28 15:14:45 by jsmith           ###   ########.fr       */
+/*   Created: 2021/05/24 11:43:08 by jsmith            #+#    #+#             */
+/*   Updated: 2022/03/03 12:40:43 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Include/push_swap.h"
 
-int	ft_isalnum(int c)
+size_t	ft_strlen(const char *str)
 {
-	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		++i;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:26:17 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 12:02:14 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:15:52 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ void	ft_get_middle(t_nodelst *nodelst)
 			nodelst->middle = head;
 		head = head->next;
 	}
-	if (nodelst->middle->nbr < head->nbr)
+	if (head->nbr > small->nbr && head->nbr < big->nbr)
 		nodelst->middle = head;
 }
 
 void	ft_refresh_stacklen(t_nodelst *nodelst)
 {	
 	t_node	*pnt;
-	t_node	*ghost_pointer;
 	t_node	*last_ptr;
 	int		i;
 
@@ -84,7 +83,6 @@ void	ft_refresh_stacklen(t_nodelst *nodelst)
 void	ft_refresh_stacklen_b(t_nodelst *nodelst)
 {	
 	t_node	*pnt;
-	t_node	*ghost_pointer;
 	t_node	*last_ptr;
 	int		i;
 

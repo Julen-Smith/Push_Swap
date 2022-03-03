@@ -6,11 +6,11 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:23:39 by jsmith            #+#    #+#             */
-/*   Updated: 2021/06/09 10:11:51 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 12:35:20 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Include/push_swap.h"
 
 static char	**ft_free(char **p, size_t count)
 {

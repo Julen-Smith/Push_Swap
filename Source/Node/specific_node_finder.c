@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:27:46 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 10:34:10 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:25:51 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	ft_where_is_node_in_stack(t_nodelst *nodelst, int nbr)
 	int		i;
 
 	i = 1;
-	if (nodelst->a_head)
-		pnt = nodelst->a_head;
+	pnt = nodelst->a_head;
 	while (pnt && pnt->next)
 	{
 		if (pnt && pnt->nbr == nbr)
@@ -65,8 +64,7 @@ t_node	*ft_return_node_by_pos(t_nodelst *nodelst, int position)
 	int		i;
 
 	i = 1;
-	if (nodelst->a_head)
-		pnt = nodelst->a_head;
+	pnt = nodelst->a_head;
 	while (pnt && pnt->next)
 	{
 		if (pnt && pnt->position == position)
@@ -82,11 +80,8 @@ t_node	*ft_return_lowst_pointer(t_nodelst *lst)
 	t_node	*pnt;
 	t_node	*dummy;
 
-	if (lst->a_head)
-	{
-		pnt = lst->a_head;
-		dummy = lst->a_head;
-	}
+	pnt = lst->a_head;
+	dummy = lst->a_head;
 	while (pnt && pnt->next)
 	{
 		if (pnt->nbr < dummy->nbr)
@@ -110,11 +105,8 @@ t_node	*ft_return_biggst_pointer(t_nodelst *lst, char e)
 	}
 	else
 	{
-		if (lst->b_head)
-		{
-			pnt = lst->b_head;
-			dummy = lst->b_head;
-		}
+		pnt = lst->b_head;
+		dummy = lst->b_head;
 	}
 	while (pnt && pnt && pnt->next)
 	{

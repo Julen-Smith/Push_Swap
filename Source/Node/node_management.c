@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 09:58:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 11:50:56 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 12:20:56 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_initialize_positions(t_nodelst *lst)
 	lp->next = NULL;
 	free(ghost_pointer);
 }
-
+/*
 void	ft_print_stack_a(t_nodelst *nodelst)
 {
 	t_node	*dummy;
@@ -107,3 +107,4 @@ void	ft_print_stack_b(t_nodelst *nodelst)
 	}
 
 }
+*/

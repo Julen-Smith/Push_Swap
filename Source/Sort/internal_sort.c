@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:09:55 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 10:29:28 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:22:57 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_node	*ft_order(t_nodelst *lst)
 {
 	t_node	*hp;
-	t_node	*target;
 	t_node	*dummy;
 	t_node	*last_node;
 	t_node	*ghost_pointer;
@@ -44,8 +43,6 @@ void	ft_generate_positions(t_nodelst *lst)
 {
 	t_node	*hp;
 	t_node	*dummy;
-	t_node	*last_node;
-	t_node	*ghost_pointer;
 	int		i;
 
 	i = 1;
@@ -98,6 +95,7 @@ t_node	*ft_return_last_ptr_b_edition(t_nodelst *lst)
 {
 	t_node	*pnt;
 
+	pnt = lst->a_head;
 	if (lst->b_head)
 		pnt = lst->b_head;
 	while (pnt && pnt->next)

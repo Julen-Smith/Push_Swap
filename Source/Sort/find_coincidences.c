@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:58:07 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 10:42:57 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:24:06 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	ft_find_moves_from_top(t_nodelst *nodelst, int position)
 	int		i;
 
 	i = 0;
-	if (nodelst->b_head)
-		dummy = nodelst->b_head;
+	dummy = nodelst->b_head;
 	while (dummy && dummy->next)
 	{
 		if (dummy->position == position)

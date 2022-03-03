@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_perror_exit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 19:51:00 by jsmith            #+#    #+#             */
-/*   Updated: 2021/06/02 19:54:13 by jsmith           ###   ########.fr       */
+/*   Created: 2022/02/01 09:07:05 by jsmith            #+#    #+#             */
+/*   Updated: 2022/03/03 12:32:32 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Include/push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_perror_exit(char *s)
 {
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(*node));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	if (!(s))
+		return ;
+	write(1, s, ft_strlen(s));
+	exit (0);
 }

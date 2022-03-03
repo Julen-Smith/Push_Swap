@@ -6,11 +6,11 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 12:22:23 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 11:55:21 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:01:21 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Include/push_swap.h"
 
 static int	ft_is_space(char c)
 {
@@ -41,6 +41,6 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 		res = (res * 10) + (*str++ - 48);
 	if (res * negative > 2147483647 || res * negative < -2147483648)
-		exit(0);
+		ft_perror_exit("Error\n");
 	return (negative * res);
 }

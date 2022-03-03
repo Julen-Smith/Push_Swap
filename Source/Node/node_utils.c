@@ -6,7 +6,7 @@
 /*   By: jsmith <jsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:57:12 by jsmith            #+#    #+#             */
-/*   Updated: 2022/03/03 10:38:51 by jsmith           ###   ########.fr       */
+/*   Updated: 2022/03/03 13:28:59 by jsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ t_node	*ft_return_specific_node(t_nodelst *nodelst, int last, char e)
 	i = 0;
 	if (e == 'a')
 	{
-		if (nodelst->a_head)
-			spec_node = nodelst->a_head;
+		spec_node = nodelst->a_head;
 		while (spec_node && i != last && spec_node && spec_node->next)
 		{
 				spec_node = spec_node->next;
@@ -59,8 +58,7 @@ t_node	*ft_return_specific_node(t_nodelst *nodelst, int last, char e)
 	}
 	else
 	{
-		if (nodelst->b_head)
-			spec_node = nodelst->b_head;
+		spec_node = nodelst->b_head;
 		while (spec_node && i != last && spec_node && spec_node->next)
 		{
 			spec_node = spec_node->next;
